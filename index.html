@@ -16,7 +16,7 @@
   <!-- marked.js: MD → HTML 변환 라이브러리 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
   <script>
-    fetch('project briefs.md')
+    fetch('ProjectDescription.md')
       .then(res => res.text())
       .then(md => {
         document.getElementById('content').innerHTML = marked.parse(md);
