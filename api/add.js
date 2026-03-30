@@ -1,6 +1,6 @@
-import { sql } from '@vercel/postgres';
+const { sql } = require('@vercel/postgres');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const { a, b } = req.query;
   const result = Number(a) + Number(b);
 
@@ -16,4 +16,4 @@ export default async function handler(req, res) {
   await sql`INSERT INTO logs (a, b, result) VALUES (${a}, ${b}, ${result})`;
 
   res.json({ result });
-}
+};
