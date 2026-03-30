@@ -1,6 +1,6 @@
-import { sql } from '@vercel/postgres';
+const { sql } = require('@vercel/postgres');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   await sql`
     CREATE TABLE IF NOT EXISTS logs (
       id SERIAL PRIMARY KEY,
@@ -13,4 +13,4 @@ export default async function handler(req, res) {
 
   const { rows } = await sql`SELECT * FROM logs ORDER BY created_at DESC`;
   res.json(rows);
-}
+};
