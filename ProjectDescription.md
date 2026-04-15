@@ -3,17 +3,20 @@
 
 | 항목 | 내용 |
 |------|------|
-| 프로젝트명 | 로컬 환경에서의 Agentic AI 병목 분석 및 성능 최적화: Apple silicon 온디바이스를 중심으로 |
+| 프로젝트명 | 로컬 LLM 기반 Coding Agent에서 Frequently Accessed Code 블록의 KV Cache 재사용을 통한 Token 소비 최적화 |
 | 서비스명(브랜드) | |
 | 트랙 | 연구 |
 | 팀명 | def |
 | 팀구성 | 서혜원, 신은서, 이재린 |
 | 팀지도교수 | 심재형 교수님 |
-| 무엇을 만들고자 하는가 | - 로컬 워크로드를 분석하고 병목을 스스로 해결하는 에이전트 기반 최적화 프레임워크 설계 및 구현<br>- Experimental Evaluation (논문 핵심): 최적화 적용 전/후의 성능(TPS, Latency, Energy Efficiency) 비교 데이터와 다양한 워크로드 시나리오(단일 추론 vs 멀티태스킹)에서의 자원 효율성 검증 보고서 |
-| 고객 (누구를 위해) | - Agent AI 시스템 설계자 및 연구자: 클라우드 의존도를 낮추고 로컬 기기(Edge Device)의 하드웨어 잠재력을 끝까지 끌어올려야 하는 엔지니어<br>- Agent AI 사용자: 외부 클라우드 서버에 데이터를 보내지 않고, Mac mini 같은 로컬 기기에서 개인화된 AI 모델을 안전하게 돌리고 싶은 개인 및 기업 |
-| Pain Point (해결할 문제) | - 리소스 고갈:LLM(거대언어모델) 실행 시 메모리 점유율이 급증하여 시스템이 멈추거나 느려지는 현상<br>- 예측 불가능한 병목(Dynamic Bottleneck):워크로드의 성격(연산 중심 vs 메모리 중심)에 따라 시스템의 어느 부분에서 병목이 생길지 실시간으로 파악하기 어려움<br>- 메모리 고갈(Memory Issue):특히 LLM 구동 시 제한된 통합 메모리(Unified Memory) 용량을 초과할 때 생기는 다양한 문제점 |
-| 사용 기술 | - Agentic Monitoring Loop : 에이전트가 시스템 API를 통해 CPU/GPU 등 점유율 및 전력 소모량을 실시간 관찰하고 대응 전략을 결정<br>- 현재 실행 중인 워크로드에 대한 실시간으로 분류하는 분석 알고리즘 |
-| 기대 효과 | - 효율성 극대화:동일 하드웨어 대비 AI 추론 성능(Throughput) 및 응답 속도(Latency)의 유의미한 향상.<br>- 시스템 안정성:메모리 이슈로 인한 시스템 다운 방지 및 멀티태스킹 환경에서의 부드러운 사용자 경험 유지.<br>- 에너지 효율: 불필요한 연산 낭비를 줄여 전력 소모 최적화 및 발열 제어 |
+| 무엇을 만들고자 하는가 | 코딩 에이전트가 레포지토리를 탐색하는 과정에서 반복적으로 읽히는 코드 블록을 추적하고, 해당 블록의 KV Cache를 context 내 위치에 무관하게 메모리에 상주시켜 재사용함으로써 prefill 비용을 줄이는 최적화 레이어를 vLLM 기반 로컬 환경에 구현한다.
+- 코드 블록별 read frequency 프로파일러<br>
+- Hot block 판별 및 KV Cache pinning 정책<br>
+- 로컬 LLM 추론 파이프라인과의 통합<br>|
+| 고객 (누구를 위해) | - 로컬 LLM으로 코딩 에이전트를 운용하는 개인 개발자 / 연구자<br> - API 비용 대신 온디바이스 추론을 선택한 팀 (스타트업, 보안 민감 조직)<br> - NVIDIA GPU 기반 자체 인프라 운용 조직<br>|
+| Pain Point (해결할 문제) | - 코딩 에이전트의 토큰 소비에서 input token이 압도적으로 지배적이며, 토큰 캐싱을 적용해도 그 구조는 유지된다. 핵심 원인은 코드 탐색 패턴에 있다.<br>- SWE-Agent를 포함한 코딩 에이전트는 파일 접근 시 전체 파일 내용을 읽는 whole-file reading 방식을 채택하는데, 매 스텝마다 대화 히스토리가 누적되면서 같은 파일을 반복 읽어도 prefix가 달라져 기존 prefix caching이 무력화된다.<br>->에이전트가 같은 파일을 반복 탐색할 때마다 full prefill이 재발생하고, 로컬 환경에서는 이것이 직접적인 지연 시간 + VRAM 대역폭 낭비로 이어짐 |
+| 사용 기술 | - 에이전트 프레임워크 : SWE-Agent<br> - 추론 런타임 : vLLM<br>- 타겟 하드웨어 : NVDIA RTX 5090X2(VRAM 31.84GBX2, Linux)<br>- 프로파일링 : nvida-smi, nvml, vLLM metrics endpoint<br>- KV Cache 제어 : vLLM block manager 커스터마이징+위치에 종속되지 않는 pinning 정책<br>|
+| 기대 효과 | - Prefill latency 감소 : 자주 읽히는 코드 블록의 KV Cache를 재계산 없이 재사용<br>- VRAM 대역폭 절약 — RTX 5090 듀얼 환경에서 중복 prefill로 인한 메모리 낭비 제거<br>- 총 토큰 소비 감소 : 반복 read에서 발생하는 input token 중복 제거<br> -Long context 환경 대응 : 히스토리가 누적되어도 캐시 hit 유지<br>|
 | GitHub Repo | [https://github.com/capstone-2026-ewha/def](https://github.com/capstone-2026-ewha/def) |
 | Team Ground Rule | [https://github.com/capstone-2026-ewha/def/blob/main/Team_Ground_Rule.md](https://github.com/capstone-2026-ewha/def/blob/main/Team_Ground_Rule.md) |
-| 최종수정일 | 2026-3-12 |
+| 최종수정일 | 2026-4-15 |
