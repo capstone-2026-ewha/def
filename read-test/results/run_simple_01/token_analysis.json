@@ -1,0 +1,164 @@
+{
+  "source": "/acpl-ssd10/hellkitty/results/run_simple_01/toy_simple_01/toy_simple_01.traj",
+  "trajectory_analysis": {
+    "by_category": {
+      "search": {
+        "count": 3,
+        "obs_tokens": 30,
+        "thought_tokens": 236,
+        "action_tokens": 24
+      },
+      "read": {
+        "count": 1,
+        "obs_tokens": 151,
+        "thought_tokens": 75,
+        "action_tokens": 6
+      },
+      "edit": {
+        "count": 3,
+        "obs_tokens": 25,
+        "thought_tokens": 284,
+        "action_tokens": 104
+      },
+      "exec": {
+        "count": 1,
+        "obs_tokens": 2,
+        "thought_tokens": 61,
+        "action_tokens": 6
+      },
+      "empty": {
+        "count": 4,
+        "obs_tokens": 6,
+        "thought_tokens": 424,
+        "action_tokens": 0
+      }
+    },
+    "per_turn": [
+      {
+        "turn": 0,
+        "category": "search",
+        "action_preview": "grep -r \"class Calculator\" .",
+        "obs_tokens": 8,
+        "thought_tokens": 81,
+        "action_tokens": 8
+      },
+      {
+        "turn": 1,
+        "category": "read",
+        "action_preview": "cat ./src/calculator.py",
+        "obs_tokens": 151,
+        "thought_tokens": 75,
+        "action_tokens": 6
+      },
+      {
+        "turn": 2,
+        "category": "search",
+        "action_preview": "grep -r \"def divide\" .",
+        "obs_tokens": 11,
+        "thought_tokens": 90,
+        "action_tokens": 8
+      },
+      {
+        "turn": 3,
+        "category": "edit",
+        "action_preview": "sed -i '/def divide/a\\    if b == 0:\\n        raise ZeroDivisionError(\"Cannot di",
+        "obs_tokens": 0,
+        "thought_tokens": 82,
+        "action_tokens": 33
+      },
+      {
+        "turn": 4,
+        "category": "edit",
+        "action_preview": "cat <<'EOF' > test_calculator.py from src.calculator import Calculator  calc = C",
+        "obs_tokens": 0,
+        "thought_tokens": 113,
+        "action_tokens": 39
+      },
+      {
+        "turn": 5,
+        "category": "exec",
+        "action_preview": "python3 test_calculator.py",
+        "obs_tokens": 2,
+        "thought_tokens": 61,
+        "action_tokens": 6
+      },
+      {
+        "turn": 6,
+        "category": "search",
+        "action_preview": "grep -r \"def power\" .",
+        "obs_tokens": 11,
+        "thought_tokens": 65,
+        "action_tokens": 8
+      },
+      {
+        "turn": 7,
+        "category": "edit",
+        "action_preview": "sed -i 's/^def power\\(.*\\):$/def power(\\1):\\n    return \\1 ** \\2/' ./src/operati",
+        "obs_tokens": 25,
+        "thought_tokens": 89,
+        "action_tokens": 32
+      },
+      {
+        "turn": 8,
+        "category": "empty",
+        "action_preview": "",
+        "obs_tokens": 0,
+        "thought_tokens": 138,
+        "action_tokens": 0
+      },
+      {
+        "turn": 9,
+        "category": "empty",
+        "action_preview": "",
+        "obs_tokens": 0,
+        "thought_tokens": 138,
+        "action_tokens": 0
+      },
+      {
+        "turn": 10,
+        "category": "empty",
+        "action_preview": "",
+        "obs_tokens": 0,
+        "thought_tokens": 138,
+        "action_tokens": 0
+      },
+      {
+        "turn": 11,
+        "category": "empty",
+        "action_preview": "",
+        "obs_tokens": 6,
+        "thought_tokens": 10,
+        "action_tokens": 0
+      }
+    ]
+  },
+  "history_analysis": {
+    "by_role": {
+      "system": {
+        "count": 1,
+        "tokens": 118
+      },
+      "user": {
+        "count": 10,
+        "tokens": 1378
+      },
+      "assistant": {
+        "count": 9,
+        "tokens": 795
+      }
+    }
+  },
+  "cumulative_consumption": {
+    "total_input_tokens": 22949,
+    "by_category": {
+      "system_prompt": 1416,
+      "initial_task": 13020,
+      "assistant_response": 6649,
+      "tool_result_search": 242,
+      "tool_result_read": 1510,
+      "tool_result_edit": 100,
+      "tool_result_exec": 12,
+      "tool_result_empty": 0
+    }
+  }
+}

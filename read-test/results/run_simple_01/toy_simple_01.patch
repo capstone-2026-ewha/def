@@ -1,0 +1,40 @@
+diff --git a/src/__pycache__/__init__.cpython-311.pyc b/src/__pycache__/__init__.cpython-311.pyc
+new file mode 100644
+index 0000000..e44f734
+Binary files /dev/null and b/src/__pycache__/__init__.cpython-311.pyc differ
+diff --git a/src/__pycache__/calculator.cpython-311.pyc b/src/__pycache__/calculator.cpython-311.pyc
+new file mode 100644
+index 0000000..d5c7142
+Binary files /dev/null and b/src/__pycache__/calculator.cpython-311.pyc differ
+diff --git a/src/__pycache__/operations.cpython-311.pyc b/src/__pycache__/operations.cpython-311.pyc
+new file mode 100644
+index 0000000..23b11e7
+Binary files /dev/null and b/src/__pycache__/operations.cpython-311.pyc differ
+diff --git a/src/__pycache__/utils.cpython-311.pyc b/src/__pycache__/utils.cpython-311.pyc
+new file mode 100644
+index 0000000..f462a96
+Binary files /dev/null and b/src/__pycache__/utils.cpython-311.pyc differ
+diff --git a/src/operations.py b/src/operations.py
+index 62223b3..c2a6d28 100644
+--- a/src/operations.py
++++ b/src/operations.py
+@@ -8,6 +8,8 @@ def multiply(a, b):
+     return a * b
+ 
+ def divide(a, b):
++    if b == 0:
++        raise ZeroDivisionError("Cannot divide by zero")
+     # BUG: no zero check
+     return a / b
+ 
+diff --git a/test_calculator.py b/test_calculator.py
+new file mode 100644
+index 0000000..d11c202
+--- /dev/null
++++ b/test_calculator.py
+@@ -0,0 +1,5 @@
++from src.calculator import Calculator
++
++calc = Calculator()
++result = calc.compute('pow', 2, 3)
++print(result)
