@@ -113,10 +113,7 @@ vLLM Block Manager
 ---
 
 ## References
-
-- Kariyappa & Suh. *SideQuest: Model-Driven KV Cache Management for Long-Horizon Agentic Reasoning.* arXiv:2602.22603, 2026.
-- *CodeComp: Structural KV Cache Compression for Agentic Coding.* arXiv:2604.10235, 2026.
+ 
 - Kwon et al. *Efficient Memory Management for Large Language Model Serving with PagedAttention.* SOSP, 2023.
-- Yang et al. *SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.* NeurIPS, 2024.
-- Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR, 2024.
-
+- Yao et al. *ReAct: Synergizing Reasoning and Acting in Language Models.* ICLR, 2023.
+- Vaswani et al. *Attention Is All You Need.* NeurIPS, 2017.
