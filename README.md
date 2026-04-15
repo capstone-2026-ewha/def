@@ -24,11 +24,11 @@ Turn 2:  [system] + [history_1] + [file_A] + [query_2] → prefix 불일치; cac
 Turn N:  [system] + [history_1..N] + [file_A] + ...
 
                          ┌─────────────────────────┐
-                         │     FAC-KV Cache Layer   │
-                         │                          │
-                         │  file_A  →  KV pinned ✓  │
-                         │  file_B  →  KV pinned ✓  │
-                         │  file_C  →  evicted       │
+                         │     FAC-KV Cache Layer  │
+                         │                         │
+                         │  file_A  →  KV pinned ✓ │
+                         │  file_B  →  KV pinned ✓ │
+                         │  file_C  →  evicted     │
                          └─────────────────────────┘
                                       ↓
                      Turn 2..N에서 file_A prefill 생략
