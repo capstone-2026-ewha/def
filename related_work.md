@@ -1,24 +1,11 @@
 # FAC-KV: 관련 연구 및 차별점
 
 > 2026 Spring Capstone Project — 연구트랙 중간 과제  
-> **PMF 사전적 정의 / Related Work 3편 / 우리 팀 연구의 차별점**
+> **Related Work 3편 / 우리 팀 연구의 차별점**
 
 ---
 
-## 1. PMF(Product-Market Fit)의 사전적 정의
-
-**PMF**란 Marc Andreessen이 2007년에 처음 정형화한 개념으로,  
-**"좋은 시장에서 그 시장을 만족시킬 수 있는 제품을 보유한 상태(being in a good market with a product that can satisfy that market)"** 를 의미한다.
-
-보다 구체적으로는, 타겟 고객이 제품이 해결해주는 문제를 실제로 중요하게 여기고, 그 해결 방식에 충분히 만족하여 반복 사용하고 타인에게 추천까지 하는 상태를 가리킨다. PMF는 단순한 사용자 수나 매출 숫자가 아닌, **제품이 시장의 진짜 수요와 맞물려 있는가**를 나타내는 개념이다.
-
-PMF를 정량적으로 측정하는 대표적인 방법으로는 Sean Ellis의 **"40% Rule"** 이 있다. "이 제품이 없어진다면 얼마나 실망하겠습니까?"라는 질문에 "매우 실망할 것이다"라고 응답하는 사용자가 40% 이상이면 PMF에 도달했다고 판단하는 기준이다. 이 외에도 코호트 리텐션율, NPS(Net Promoter Score), CAC 대비 LTV 비율 등 여러 지표가 PMF 달성 여부를 판단하는 데 활용된다.
-
-PMF는 정적인 상태가 아니라 **지속적으로 검증하고 조정해야 하는 과정(iterative process)** 이며, 달성 이후에도 시장 변화에 따라 다시 흔들릴 수 있다. 스타트업에서는 "PMF 이전"과 "PMF 이후"가 전략의 근본적 전환점이 되는 만큼, 이를 조기에 정확히 측정하는 것이 매우 중요하다.
-
----
-
-## 2. Related Work: 참고 논문 3편
+## 1. Related Work: 참고 논문 3편
 
 ### 논문 1. SWE-Pruner: Self-Adaptive Context Pruning for Coding Agents
 > Wang et al., *arXiv:2601.16746*, 2026
@@ -62,7 +49,7 @@ PMF는 정적인 상태가 아니라 **지속적으로 검증하고 조정해야
 
 ---
 
-## 3. 우리 팀 연구(FAC-KV)의 차별점
+## 2. 우리 팀 연구(FAC-KV)의 차별점
 
 ### 문제를 바라보는 시각 자체가 다르다
 
