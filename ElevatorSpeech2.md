@@ -74,9 +74,7 @@ vLLM 내부의 **Block Manager**는 기본적으로 **LRU 정책**(가장 오랫
 
 ---
 
-## 6. Coding Agent KV/Context 최적화 기법 비교
-
-### Related Work
+## 6. Related Work
 
 - **SWE-Pruner**: Self-Adaptive Context Pruning for Coding Agents
 - **KVFlow**: Efficient Prefix Caching for Accelerating LLM-Based Multi-Agent Workflows
