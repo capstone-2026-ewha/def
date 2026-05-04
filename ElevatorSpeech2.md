@@ -65,16 +65,16 @@ vLLM 내부의 **Block Manager**는 기본적으로 **LRU 정책**(가장 오랫
 
 저희는 serving layer의 **block manager를 직접 커스터마이징**하여, **같은 코드 블록이 context의 어느 위치에 등장하든 KV를 재사용할 수 있는 pinning 정책**을 제안합니다.
 
----
-
-## 6. Coding Agent KV/Context 최적화 기법 비교
-
 | 축 | CodeComp | SWE-Pruner | KVFlow | **FAC-KV (네 거)** |
 |---|---|---|---|---|
 | **분류** | KV cache 압축 (eviction) | Context pruning (token-level 입력 압축) | KV cache 관리 (workflow-aware eviction + prefetch) | **KV cache 재사용 (frequency-based pinning)** |
 | **타겟 문제** | 긴 코드베이스에서 KV cache가 추론 병목 — attention-only 압축은 구조적으로 중요한 토큰을 버림 | 긴 interaction context로 인한 API 비용·latency 문제 — PPL 기반 압축은 코드의 syntactic/logical 구조를 깨뜨림 | LRU eviction이 미래 agent 호출을 예측 못해서 재사용 직전에 cache를 버림 | **자주 접근되는 코드 블록의 반복적 prefill 비용 (token 소비)** |
 | **핵심 아이디어** | Joern으로 추출한 Code Property Graph prior로 구조적으로 중요한 토큰 보호 | 현재 task에 대한 explicit goal hint로 0.6B neural skimmer가 line 단위 선택 | Agent Step Graph + steps-to-execution 값으로 미래 활성화 시점 예측 | **접근 빈도(frequency) 기반으로 hot code block의 KV를 GPU에 pin, position-agnostic 재사용** |
 | **개입 위치** | 추론 중 KV cache (attention 내부) | 입력 단계 (file read 결과 가공) | KV cache eviction policy + CPU↔GPU prefetch | **KV cache 저장/재사용 레이어** |
+
+---
+
+## 6. Coding Agent KV/Context 최적화 기법 비교
 
 ### Related Work
 
