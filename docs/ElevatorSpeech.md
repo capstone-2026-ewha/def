@@ -80,6 +80,7 @@ vLLM 내부의 **Block Manager**는 기본적으로 **LRU 정책**(가장 오랫
 
 ## 6. Related Work
 
-- **SWE-Pruner**: Self-Adaptive Context Pruning for Coding Agents
-- **KVFlow**: Efficient Prefix Caching for Accelerating LLM-Based Multi-Agent Workflows
-- **CodeComp**: Structural KV Cache Compression for Agentic Coding
+
+- Pan et al. *KVFlow: Efficient Prefix Caching for Accelerating LLM-Based Multi-Agent Workflows.* NeurIPS, 2025. [arXiv:2507.07400](https://arxiv.org/abs/2507.07400)
+- Wang et al. *SWE-Pruner: Self-Adaptive Context Pruning for Coding Agents.* 2026. [arXiv:2601.16746](https://arxiv.org/abs/2601.16746)
+- Chen et al. *CodeComp: Structural KV Cache Compression for Agentic Coding.* 2026. [arXiv:2604.10235](https://arxiv.org/abs/2604.10235)
