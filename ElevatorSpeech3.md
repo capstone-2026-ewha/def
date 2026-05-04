@@ -100,18 +100,6 @@ vLLM Block Manager (커스터마이징)
 
 ---
 
-## 팀 정보
-
-| 항목 | 내용 |
-|---|---|
-| 팀명 | def |
-| 팀구성 | 서혜원, 신은서, 이재린 |
-| 지도교수 | 심재형 교수님 |
-| 트랙 | 연구 |
-| GitHub | https://github.com/capstone-2026-ewha/def |
-
----
-
 ## References
 
 - Kwon et al. *Efficient Memory Management for Large Language Model Serving with PagedAttention.* SOSP, 2023.
