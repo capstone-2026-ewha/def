@@ -2,6 +2,7 @@
 
 > **프로젝트 한 줄 요약**
 > 코딩 에이전트가 자주 참조하는 코드 블록의 KV cache를 vLLM 메모리에 고정(pinning)하여, 반복적인 prefill 비용을 제거하기 위해, vLLM block manager를 커스터마이징한 position-agnostic pinning 정책을 제안합니다.
+
 [![Status](https://img.shields.io/badge/status-research-blue?style=flat-square)](.)
 [![Agent](https://img.shields.io/badge/agent-SWE--Agent-orange?style=flat-square)](https://github.com/princeton-nlp/SWE-agent)
 [![Runtime](https://img.shields.io/badge/runtime-vLLM-green?style=flat-square)](https://github.com/vllm-project/vllm)
