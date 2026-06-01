@@ -1,6 +1,6 @@
 # def
 2026-spring capstone project
-# TreeHit: AST-Aware KV Cache Reuse for Coding Agents
+# SynTree KV : 코딩 에이전트를 위한 AST 기반 KV 재사용 추론 최적화
 
 > **코딩 에이전트를 위한 AST 기반 KV cache 재사용** — long-context agentic workflow에서 반복되는 코드 구조를 AST 지문으로 탐지하고, 중복 prefill 비용을 제거합니다.
 
