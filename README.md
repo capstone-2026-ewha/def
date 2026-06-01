@@ -209,6 +209,14 @@ python scripts/analyze_hitrate.py \
 ```
 ---
 
+## 데모
+
+- self~.md 에서 배포한 웹사이트 상세확인 가능
+- 데모영상 유튜브 링크
+🔗 https://def-omega.vercel.app/
+
+---
+
 ## 진행 현황
 
 - [x] 문제 정의 및 선행 연구 조사
@@ -271,12 +279,6 @@ def/
 
 ---
 
-## 라이선스
-
-본 프로젝트는 연구 목적으로 작성되었습니다. 코드는 [MIT License](LICENSE) 하에 배포됩니다.
-
----
-
 ## References
 
 - Kwon et al. *Efficient Memory Management for Large Language Model Serving with PagedAttention.* SOSP, 2023.
@@ -285,3 +287,8 @@ def/
 - Li et al. *SnapKV: LLM Knows What You are Looking for Before Generation.* NeurIPS, 2024.
 - Yao et al. *DeFT: Decoding with Flash Tree-attention for Efficient Tree-structured LLM Inference.* ICLR, 2024.
 
+---
+
+## 라이선스
+
+본 프로젝트는 연구 목적으로 작성되었습니다. 코드는 [MIT License](LICENSE) 하에 배포됩니다.
