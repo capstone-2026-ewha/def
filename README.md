@@ -189,33 +189,6 @@ python scripts/analyze_hitrate.py \
     --mode all          # all | vars_only
     --scope top_level   # top_level | all_nodes
 ```
-
----
-
-## 실험 결과
-
-### Hit Rate 분석 (48개 유효 trace 기준)
-
-GO 기준: hit rate ≥ 25% **AND** token ratio ≥ 30%
-
-| 조건 | Hit Rate | Token Ratio | 판정 |
-|---|---|---|---|
-| obs 단독 / vars_only / 최상위만 | **36.2%** | 36.9% | ✅ GO |
-| obs 단독 / all / 최상위만 | 46.0% | 36.9% | ✅ GO |
-| obs+action / vars_only / 최상위만 | 41.5% | 42.4% | ✅ GO |
-| obs+action / all / 최상위만 | 51.1% | 42.4% | ✅ GO |
-
-- **α-rename 순수 기여: +9.8%p** — exact-match 대비 변수명이 달라도 동일 구조 포착
-- 권장 보수 수치: obs 단독 / vars_only / 최상위만 → **36.2% / 36.9%**
-
-### TTFT Baseline 비교
-
-| 조건 | 평균 TTFT |
-|---|---|
-| Vanilla (prefix caching 없음) | 31.2 ms |
-| vLLM prefix caching | 29.9 ms (+4% 개선) |
-| **TreeHit (구현 목표)** | **목표: 30%+ 개선** |
-
 ---
 
 ## 진행 현황
