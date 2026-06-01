@@ -224,24 +224,49 @@ python scripts/analyze_hitrate.py \
 
 ---
 
-## 레포 구조 -> 레포구조 업데이트하고 바꾸기
+## 레포 구조
 
 ```
 def/
-├── README.md
-├── scripts/
-│   ├── collect_traces.py     # SWE-bench trace 수집
-│   ├── analyze_hitrate.py    # AST hit rate 분석 (v3_5)
-│   └── measure_ttft.py       # TTFT 측정 (vanilla / prefix caching)
-├── src/
-│   ├── ast_fingerprint.py    # Tree-sitter 파싱 + α-rename + BLAKE3
-│   ├── session_cache.py      # SessionCacheTable (구현 중)
-│   └── rope_reposition.py    # RoPE re-positioning (구현 중)
-├── traces/                   # SWE-bench 실행 궤적 (gitignore)
-├── models/                   # 모델 가중치 (gitignore)
-└── results/
-    ├── hitrate_v3_5.json
-    └── ttft_baseline.json
+│
+├── README.md                             ← 프로젝트 개요, 실행 방법, 폴더 구조, 주요 기능, 배포 링크
+├── self_demo.md 
+├── requirements.txt                      ← 재현에 필요한 패키지 목록
+├── LICENSE
+├── .gitignore
+│
+├── docs/
+│   ├── [14]_def_FinalReport.PDF
+│   └── 발표자료
+│
+└── experiments/
+		├── scripts/
+		│   ├── collect_traces_30b_fp8.py 
+		│   ├── vanilla_replay.py
+		│   ├── prefix_caching_replay.py 
+		│   ├── hitrate_astkv.py 
+		│   ├── astkv_fingerprint.py 
+		│   └── visualize/ 
+		│       ├── plot_ttft.py 
+		│       └── plot_ttft_avg_comparison.py 
+		│
+		├── data/
+		│		├── swe_bench_25.json             ← 실험에 사용한 SWE-bench 이슈 목록
+		│   └── traces/ 
+		│			  └── 30b_direct_run01
+		│           └── trace 총 50개
+		│
+		└── results/ 
+		    ├── 0.5b/
+		    │   ├── prefix_caching_replay.log
+		    │   ├── prefix_caching_results.json
+		    │   ├── vanilla_replay_results.json
+		    │   └── vanilla_replay.log
+		    │
+		    └── figures/ 
+		        ├── ttft_comparison_0.5b.png
+		        └── ttft_avg_comparison_0.5b.png
+
 ```
 
 ---
