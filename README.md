@@ -27,7 +27,9 @@
 
 코딩 에이전트는 다중 턴 작업 과정에서 **같은 코드 파일을 반복적으로 읽습니다**. 대화 기록이 쌓일수록 동일한 코드 구조가 context에 반복 등장하지만, vLLM의 기존 prefix caching은 앞부분이 완전히 일치해야만 동작하기 때문에 매 턴마다 cache miss가 발생합니다.
 
-**TreeHit**은 코드 토큰에 AST(Abstract Syntax Tree) 구조 레이블을 부여하고, **BLAKE3 해시 기반 AST 지문**으로 context 내 중복 코드 블록을 탐지합니다. 동일 지문의 KV cache를 재사용함으로써 반복 prefill 비용을 제거하고 **TTFT(Time-To-First-Token)**를 단축합니다.
+**문제 정의:** 코딩 에이전트의 멀티턴 세션에서 중복 코드 블록이 반복 등장함에도 Serving Layer가 매 턴 전체를 prefill하여 불필요한 지연 비용이 발생한다.
+
+**SynTree KV**은 코드 토큰에 AST(Abstract Syntax Tree) 구조 레이블을 부여하고, **BLAKE3 해시 기반 AST 지문**으로 context 내 중복 코드 블록을 탐지합니다. 동일 지문의 KV cache를 재사용함으로써 반복 prefill 비용을 제거하고 정확도를 유지하며 TTFT(Time-To-First-Token)를 단축합니다.
 
 ```
 Turn 1:  [system] + [obs: file_A] + [action]               → file_A prefill 실행 + KV 저장
@@ -37,8 +39,8 @@ Turn N:  [system] + [history_1..N] + [obs: file_A] + ...
                     ┌──────────────────────────────────────┐
                     │         TreeHit Cache Layer          │
                     │                                      │
-                    │  AST fingerprint(file_A) → KV hit ✓ │
-                    │  AST fingerprint(file_B) → KV hit ✓ │
+                    │  AST fingerprint(file_A) → KV hit ✓  │
+                    │  AST fingerprint(file_B) → KV hit ✓  │
                     │  AST fingerprint(file_C) → miss      │
                     └──────────────────────────────────────┘
                                        ↓
