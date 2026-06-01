@@ -1,6 +1,8 @@
 requests
 torch
 transformers
+tree-sitter
 tree-sitter-python
 blake3
 vllm
+openhands-ai
