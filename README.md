@@ -107,7 +107,7 @@ R(Δ) = RoPE 회전 행렬
 |---|---|
 | Coding Agent | [OpenHands](https://github.com/All-Hands-AI/OpenHands) |
 | Inference Runtime | [vLLM](https://github.com/vllm-project/vllm) |
-| 모델 | Qwen3-Coder-30B-A3B-Instruct-FP8 |
+| 모델 | Qwen3-Coder-30B-A3B-Instruct-FP8, Qwen2.5-Coder-0.5B-Instruct |
 | AST 파싱 | Tree-sitter (증분 파싱, Python) |
 | 지문 생성 | BLAKE3 해시 (16자리) |
 | 하드웨어 | NVIDIA RTX 5090 × 2 (VRAM 31.84 GB each) |
@@ -231,7 +231,7 @@ python scripts/analyze_hitrate.py \
 
 ---
 
-## 레포 구조
+## 레포 구조 -> 레포구조 업데이트하고 바꾸기
 
 ```
 def/
