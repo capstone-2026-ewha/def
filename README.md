@@ -51,9 +51,16 @@ Turn N:  [system] + [history_1..N] + [obs: file_A] + ...
 
 ## 문제 의식
 
-SWE-bench Lite 기준으로 OpenHands 에이전트의 실행 궤적을 분석하면, **관찰(ObservationEvent) content의 대부분이 파일 읽기 결과**입니다. 파일 내용이 바뀌지 않아도 대화 기록이 앞에 추가될 때마다 full prefill이 재실행됩니다.
-
-vLLM의 내장 prefix caching은 앞부분의 **토큰 시퀀스가 완전히 동일**한 경우에만 동작합니다. multi-turn agentic 환경에서는 매 턴마다 이 조건이 깨집니다. TreeHit은 **AST 구조 동일성**을 기준으로 삼아 이 공백을 해결합니다.
+멀티턴 코딩 에이전트 세션에서는 같은 파일을 반복해서 읽게 되고, 매번 전체 prefill이 재실행됩니다. 기존 연구들은 이 문제를 다음과 같은 이유로 해결하지 못합니다.
+ 
+| 방법 | 한계 |
+|---|---|
+| **vLLM prefix caching** | 연속된 앞부분 토큰이 완전 일치할 때만 재사용. 멀티턴 세션에서 `tool_call_id`, `timestamp` 같은 동적 값이 매 턴 prefix를 파괴 → 코드 블록 구간에서 사실상 미작동 |
+| **PromptCache** | 사전 정의된 스키마 단위 재사용. RoPE position shift 미처리 → 위치가 달라진 KV 삽입 시 attention 왜곡 |
+| **CacheBlend** | 품질 보정 가능하나 정적 chunk 경계 전제 → 코딩 에이전트의 동적 출력에 적용 불가 |
+| **SnapKV** | attention score 기반 KV 압축 (현재 SOTA). 코드 구조 미활용, KV를 버리는 방식 → 정확도 손실 불가피 |
+ 
+**실험으로 확인한 사실:** vLLM prefix caching은 hit rate 75.8%임에도 Vanilla decode 대비 TTFT 차이가 단 0.8ms에 불과합니다. 캐시 적중이 시스템 프롬프트 앞부분에서만 발생하고, 실제 코드 블록 구간에서는 캐시가 작동하지 않기 때문입니다.
 
 ---
 
