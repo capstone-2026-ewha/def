@@ -158,13 +158,13 @@ git clone https://github.com/capstone-2026-ewha/def.git
 cd def
 
 # conda 환경 생성 (vLLM 서빙용)
-conda create -n treehit-vllm python=3.10
-conda activate treehit-vllm
+conda create -n vllm python=3.10
+conda activate vllm
 pip install vllm==0.8.x humming-kernels[cu13]
 
 # conda 환경 생성 (trace 수집 및 분석용)
-conda create -n treehit-openhands python=3.10
-conda activate treehit-openhands
+conda create -n openhands python=3.10
+conda activate openhands
 pip install open-hands-ai tree-sitter transformers blake3
 ```
 
@@ -179,7 +179,7 @@ huggingface-cli download Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8 \
 ### vLLM 서버 실행
 
 ```bash
-conda activate treehit-vllm
+conda activate vllm
 vllm serve ./models/Qwen3-Coder-30B-A3B-Instruct-FP8 \
     --tool-call-parser qwen3_coder \
     --enable-expert-parallel \
@@ -191,8 +191,8 @@ vllm serve ./models/Qwen3-Coder-30B-A3B-Instruct-FP8 \
 ### SWE-bench Trace 수집
 
 ```bash
-conda activate treehit-openhands
-python scripts/collect_traces.py \
+conda activate openhands
+python scripts/collect_traces_30b_fp8.py \
     --model-url http://localhost:8000/v1 \
     --output-dir ./traces/30b_run01 \
     --n-tasks 50
