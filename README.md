@@ -275,10 +275,10 @@ def/
 │
 ├── docs/
 │   ├── Team_Ground_Rule.md
-|	├── elevator_speech.md
-|	├── project briefs.md
-|	├── related_works.md
-|	├── 14_def_FinalReport.PDF	          ← 최종보고서
+│	├── elevator_speech.md
+│	├── project briefs.md
+│	├── related_works.md
+│	├── 14_def_FinalReport.PDF	          ← 최종보고서
 │   └── 14_def.pdf                        ← 발표자료 
 │
 └── experiments/
