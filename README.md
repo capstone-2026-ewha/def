@@ -244,8 +244,12 @@ def/
 ├── .gitignore
 │
 ├── docs/
-│   ├── 14_def_FinalReport.PDF
-│   └── 발표자료
+│   ├── Team_Ground_Rule.md
+|	├── elevator_speech.md
+|	├── project briefs.md
+|	├── related_works.md
+|	├── 14_def_FinalReport.PDF
+│   └── 14_def.pdf                        ← 발표자료 
 │
 └── experiments/
 		├── scripts/
