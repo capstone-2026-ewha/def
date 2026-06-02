@@ -225,10 +225,10 @@ GO 기준: hit rate ≥ 25% AND token ratio ≥ 30%
 
 | 조건 | Hit Rate | Token Ratio | 판정 |
 |------|----------|-------------|------|
-| obs 단독 / vars_only / 최상위만 | **36.2%** | 36.9% | ✅ GO |
-| obs 단독 / all / 최상위만 | 46.0% | 36.9% | ✅ GO |
-| obs+action / vars_only / 최상위만 | 41.5% | 42.4% | ✅ GO |
-| obs+action / all / 최상위만 | 51.1% | 42.4% | ✅ GO |
+| obs 단독 / vars_only | **32.6%** | 34.5% | ✅ GO |
+| obs 단독 / all | 46.0% | 42.4% | ✅ GO |
+| obs+action / vars_only | 42.6% | 40.0% | ✅ GO |
+| obs+action / all | 51.1% | 40.0% | ✅ GO |
 
 - α-rename 순수 기여: **+9.8%p** (exact-match 대비)
 - 권장 수치: obs 단독 / vars_only / 최상위만 → **36.2% hit rate / 36.9% token ratio**
@@ -237,8 +237,8 @@ GO 기준: hit rate ≥ 25% AND token ratio ≥ 30%
 
 | 조건 | 평균 TTFT | vanilla 대비 |
 |------|----------|-------------|
-| Vanilla | 31.2 ms | — |
-| vLLM prefix caching | 29.9 ms | -4.2% |
+| Vanilla | 30.5 ms | — |
+| vLLM prefix caching | 29.7 ms | -4.2% |
 | **SynTree KV (목표)** | — | **목표: -30%+** |
 
 > vLLM prefix caching은 hit rate 75.8%임에도 TTFT 개선이 0.8ms에 불과 — 코드 블록 구간에서 캐시가 실질적으로 작동하지 않음을 확인.
