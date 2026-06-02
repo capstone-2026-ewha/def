@@ -438,6 +438,7 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
     <li><a href="#problem">문제 정의</a></li>
     <li><a href="#method">방법론</a></li>
     <li><a href="#results">실험 결과</a></li>
+    <li><a href="#demo">실험 시연</a></li>
     <li><a href="#env">실험 환경</a></li>
     <li><a href="#system">시스템 구조</a></li>
     <li><a href="#roadmap">향후 계획</a></li>
@@ -456,6 +457,7 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
   <a href="#problem" class="mob-link">문제 정의<span class="arrow">→</span></a>
   <a href="#method" class="mob-link">방법론<span class="arrow">→</span></a>
   <a href="#results" class="mob-link">실험 결과<span class="arrow">→</span></a>
+  <a href="#demo" class="mob-link">실험 시연<span class="arrow">→</span></a>
   <a href="#env" class="mob-link">실험 환경<span class="arrow">→</span></a>
   <a href="#system" class="mob-link">시스템 구조<span class="arrow">→</span></a>
   <a href="#roadmap" class="mob-link">향후 계획<span class="arrow">→</span></a>
@@ -787,9 +789,134 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
   </div>
 </section>
 
-<!-- ── 04 실험 환경 ── -->
+<!-- ── 04 실험 시연 ── -->
+<section id="demo">
+  <div class="sec-label">04 — 실험 시연</div>
+  <h2 class="sec-title">실험 시연</h2>
+  <p class="sec-body" style="word-break:keep-all;line-height:1.9">
+    실험은 EWHA-ACPL3 연구서버(NVIDIA RTX 5090 × 2)에서 진행되었습니다.
+    외부 네트워크에서 직접 접근할 수 없는 내부 서버 환경 특성상 라이브 데모 대신,
+    실제 실행 화면을 순서대로 기록하여 시연합니다.
+  </p>
+
+  <div class="pipeline rv" style="margin-top:2.5rem;max-width:860px">
+
+    <!-- STEP 1 -->
+    <div class="pl-step">
+      <div class="pl-left"><div class="pl-num">1</div><div class="pl-line"></div></div>
+      <div class="pl-content">
+        <h4>서버 접속 확인 — GPU 상태 점검</h4>
+        <p style="margin-bottom:1rem">
+          EWHA-ACPL3 서버에 SSH로 접속한 뒤 <code class="ic">nvidia-smi</code>로 GPU 상태를 확인합니다.
+          NVIDIA GeForce RTX 5090 2장이 인식되어 있으며, 실험 전 대기 상태(No running processes)임을 확인합니다.
+          이후 OpenHands 가상환경을 활성화하고 분석 스크립트를 실행합니다.
+        </p>
+        <div style="background:var(--navy);border-radius:14px;overflow:hidden;margin-bottom:.5rem">
+          <div class="code-hd">
+            <div class="dots"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div></div>
+            <div class="fn-label">hellkitty@ewha-acpl3:~</div>
+          </div>
+          <img src="img/nvidia-smi_acpl3.png"
+            alt="nvidia-smi 및 스크립트 실행"
+            style="width:100%;display:block;border-radius:0 0 14px 14px">
+          <!-- fallback: inline terminal mockup -->
+          <div style="display:none;padding:1.2rem 1.5rem;font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.78);line-height:1.8">
+            <span style="color:rgba(255,255,255,.4)">(base) </span><span style="color:#5DCAA5">hellkitty@ewha-acpl3</span><span style="color:rgba(255,255,255,.4)">:~$</span> nvidia-smi<br>
+            <span style="color:rgba(255,255,255,.4)">Tue Jun  2 14:00:25 2026</span><br>
+            <span style="color:rgba(255,255,255,.5)">| NVIDIA-SMI 580.95.05 &nbsp;&nbsp;&nbsp; Driver: 580.95.05 &nbsp;&nbsp;&nbsp; CUDA: 13.0 |</span><br>
+            <span style="color:rgba(255,255,255,.5)">| GPU 0 &nbsp;NVIDIA GeForce RTX 5090 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2MiB / 32607MiB |</span><br>
+            <span style="color:rgba(255,255,255,.5)">| GPU 1 &nbsp;NVIDIA GeForce RTX 5090 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10MiB / 32607MiB |</span><br>
+            <span style="color:rgba(255,255,255,.5)">| No running processes found &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</span><br><br>
+            <span style="color:rgba(255,255,255,.4)">(base) </span><span style="color:#5DCAA5">hellkitty@ewha-acpl3</span><span style="color:rgba(255,255,255,.4)">:~$</span> conda activate ~/local-proj/ast-kv/envs/openhands<br>
+            <span style="color:rgba(255,255,255,.4)">(openhands) </span><span style="color:#5DCAA5">hellkitty@ewha-acpl3</span><span style="color:rgba(255,255,255,.4)">:~$</span> python ~/local-proj/ast-kv/scripts/hitrate_astkv.py \<br>
+            <span style="color:rgba(255,255,255,.4)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/local-proj/ast-kv/data/traces/30b_direct_run01/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="pl-step">
+      <div class="pl-left"><div class="pl-num">2</div><div class="pl-line"></div></div>
+      <div class="pl-content">
+        <h4>Trace 로딩 — 48개 trace 처리 완료</h4>
+        <p style="margin-bottom:1rem">
+          스크립트가 <code class="ic">30b_direct_run01/</code> 디렉터리를 순회하며 trace를 처리합니다.
+          전체 50개 중 2개(django-11019_run1, matplotlib-23563_run0)를 제외한
+          <strong>48개 trace</strong>가 12개 레포에 걸쳐 균형 있게 처리됩니다.
+        </p>
+        <div style="background:var(--navy);border-radius:14px;overflow:hidden;margin-bottom:.5rem">
+          <div class="code-hd">
+            <div class="dots"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div></div>
+            <div class="fn-label">hitrate_astkv.py — trace 처리</div>
+          </div>
+          <img src="img/demo-mve-hit-rate-command.png"
+            alt="스크립트 실행 명령어"
+            style="width:100%;display:block;border-radius:0 0 14px 14px">
+          <div style="display:none;padding:1.2rem 1.5rem;font-family:'DM Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.78);line-height:1.75">
+            전체 50개 / 사용 48개 / 제외 2개<br>
+            제외 : django__django-11019_run1, matplotlib__matplotlib-23563_run0<br>
+            <span style="color:rgba(255,255,255,.4)">[1/48] astropy__astropy-12907_run0 처리 완료</span><br>
+            <span style="color:rgba(255,255,255,.4)">[2/48] astropy__astropy-12907_run1 처리 완료</span><br>
+            <span style="color:rgba(255,255,255,.4)">... (12개 레포, 48개 trace 전체 처리 완료)</span><br>
+            <span style="color:rgba(255,255,255,.4)">[48/48] sympy__sympy-23117_run1 처리 완료</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="pl-step">
+      <div class="pl-left"><div class="pl-num" style="background:var(--go)">3</div></div>
+      <div class="pl-content">
+        <h4>분석 결과 — 4가지 조건 모두 GO ✓</h4>
+        <p style="margin-bottom:1rem">
+          hit rate와 자격 서브트리 토큰 비율(token ratio)을 4가지 조건에서 측정합니다.
+          조건은 (1) ActionEvent 포함 여부 × (2) α-rename 범위(all vs vars_only)의 조합입니다.
+          <strong>메인 지표</strong>는 가장 보수적인 <code class="ic">obs 단독 / vars_only</code> 조건으로,
+          ActionEvent의 자명한 hit을 제외하고 함수명까지 보존한 가장 엄격한 측정값입니다.
+          이 수치도 GO 기준(hitrate ≥ 25%, token ratio ≥ 30%)을 명확히 초과하여
+          AST 기반 KV 재사용의 가능성이 데이터로 입증되었습니다.
+        </p>
+        <div style="background:var(--navy);border-radius:14px;overflow:hidden">
+          <div class="code-hd">
+            <div class="dots"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div></div>
+            <div class="fn-label">hitrate_astkv.py — 분석 결과</div>
+          </div>
+          <img src="img/demo-result-1.png"
+            alt="48개 trace 처리 목록"
+            style="width:100%;display:block">
+          <div style="height:1px;background:rgba(255,255,255,.07)"></div>
+          <img src="img/demo-result-2.png"
+            alt="hit rate 분석 결과"
+            style="width:100%;display:block;border-radius:0 0 14px 14px">
+          <div style="display:none;padding:1.2rem 1.5rem;font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.78);line-height:1.9">
+            <span style="color:rgba(255,255,255,.4)">조건&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hitrate &nbsp;token ratio &nbsp;eligible &nbsp;hits</span><br>
+            obs 단독 &nbsp;&nbsp;/ alpha-rename all &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5DCAA5">42.4%</span> &nbsp;&nbsp;&nbsp;34.5% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7240 &nbsp;&nbsp;&nbsp;3207<br>
+            obs 단독 &nbsp;&nbsp;/ alpha-rename vars_only &nbsp;<span style="color:#5DCAA5">32.6%</span> &nbsp;&nbsp;&nbsp;34.5% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7240 &nbsp;&nbsp;&nbsp;2522<br>
+            obs+action / alpha-rename all &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#5DCAA5">51.1%</span> &nbsp;&nbsp;&nbsp;40.0% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9576 &nbsp;&nbsp;&nbsp;5117<br>
+            obs+action / alpha-rename vars_only &nbsp;<span style="color:#5DCAA5">42.6%</span> &nbsp;&nbsp;&nbsp;40.0% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9576 &nbsp;&nbsp;&nbsp;4337<br><br>
+            GO 기준 : hitrate ≥ 25% AND token ratio ≥ 30%<br>
+            <span style="color:#28C840">● GO</span> (hitrate 42.4%, token ratio 34.5%)<br>
+            <span style="color:#28C840">● GO</span> (hitrate 32.6%, token ratio 34.5%) &nbsp;<span style="color:rgba(255,255,255,.4)">← 메인 지표</span><br>
+            <span style="color:#28C840">● GO</span> (hitrate 51.1%, token ratio 40.0%)<br>
+            <span style="color:#28C840">● GO</span> (hitrate 42.6%, token ratio 40.0%)
+          </div>
+        </div>
+        <!-- GO callout -->
+        <div class="hl-box" style="margin-top:1rem">
+          가장 보수적인 수치(obs 단독 / vars_only)에서도 hitrate <strong>32.6%</strong>, token ratio <strong>34.5%</strong>로 GO 기준을 초과합니다.
+          AST 기반 KV 재사용의 타당성이 실험 데이터로 확인되었습니다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 05 실험 환경 ── -->
 <section id="env">
-  <div class="sec-label">04 — 실험 환경</div>
+  <div class="sec-label">05 — 실험 환경</div>
   <h2 class="sec-title">하드웨어 & 소프트웨어</h2>
   <p class="sec-body">RTX 5090 × 2가 장착된 ewha-acpl3 서버에서 vLLM과 OpenHands를 연동하여 실험을 수행했습니다.</p>
 
@@ -928,9 +1055,9 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
   </div>
 </section>
 
-<!-- ── 05 시스템 구조 ── -->
+<!-- ── 06 시스템 구조 ── -->
 <section id="system">
-  <div class="sec-label">05 — 시스템 구조</div>
+  <div class="sec-label">06 — 시스템 구조</div>
   <div class="two-col-35">
     <div>
       <h2 class="sec-title">전체 파이프라인</h2>
@@ -983,9 +1110,9 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
   </div>
 </section>
 
-<!-- ── 06 향후 계획 ── -->
+<!-- ── 07 향후 계획 ── -->
 <section id="roadmap">
-  <div class="sec-label">06 — 향후 계획</div>
+  <div class="sec-label">07 — 향후 계획</div>
   <h2 class="sec-title">다음 단계</h2>
   <p class="sec-body" style="word-break:keep-all;line-height:1.9">현재까지의 실험이 "재사용할 만한 코드 구조가 충분히 존재하는가"를 확인하는 단계였다면, 앞으로는 실제 KV 재사용 시스템을 구현하고 그 효과를 측정하는 단계로 나아갑니다.</p>
 
@@ -1033,9 +1160,9 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
   </div>
 </section>
 
-<!-- ── 07 팀 소개 ── -->
+<!-- ── 08 팀 소개 ── -->
 <section id="team" style="border-bottom:none">
-  <div class="sec-label">07 — 팀 소개</div>
+  <div class="sec-label">08 — 팀 소개</div>
   <h2 class="sec-title">Team def(14)</h2>
   <p class="sec-body">이화여자대학교 컴퓨터공학과 졸업 캡스톤 연구트랙 팀입니다.</p>
 
