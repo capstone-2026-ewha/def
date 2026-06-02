@@ -78,7 +78,7 @@ MVE 실험 수치를 확인합니다.
 
 실험 전체 흐름은 아래 영상에서도 확인할 수 있습니다.
 - 🎥 **시연 영상**: [https://youtu.be/oJYQL1lQmpE](https://youtu.be/oJYQL1lQmpE)
-- 
+  
 **<확인 포인트>**
 - EWHA-ACPL3 서버 접속 상태 및 RTX 5090 × 2 GPU 인식 확인 (nvidia-smi)
 - OpenHands 가상환경 활성화 후 `hitrate_astkv.py` 실행 명령어
