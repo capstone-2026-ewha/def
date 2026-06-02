@@ -209,11 +209,11 @@ python scripts/analyze_hitrate.py \
 ```
 ---
 
-## 데모 ? quickstart ? 더 예쁘게 디벨롭
+## 시연
 
-- self~.md 에서 배포한 웹사이트 상세확인 가능
-- 🔗 https://def-omega.vercel.app/
-- 데모영상 유튜브 링크
+- self_demo.md 에서 배포한 라이브데모 상세확인 가능!
+- 🔗라이브데모: https://def-omega.vercel.app/
+- 🎥시연영상: https://youtu.be/oJYQL1lQmpE
 
 ---
 
