@@ -217,6 +217,34 @@ python scripts/analyze_hitrate.py \
 
 ---
 
+## 📊 실험 결과
+
+### exp1 — Hit Rate 분석 (30B FP8, 48개 유효 trace 기준)
+
+GO 기준: hit rate ≥ 25% AND token ratio ≥ 30%
+
+| 조건 | Hit Rate | Token Ratio | 판정 |
+|------|----------|-------------|------|
+| obs 단독 / vars_only / 최상위만 | **36.2%** | 36.9% | ✅ GO |
+| obs 단독 / all / 최상위만 | 46.0% | 36.9% | ✅ GO |
+| obs+action / vars_only / 최상위만 | 41.5% | 42.4% | ✅ GO |
+| obs+action / all / 최상위만 | 51.1% | 42.4% | ✅ GO |
+
+- α-rename 순수 기여: **+9.8%p** (exact-match 대비)
+- 권장 수치: obs 단독 / vars_only / 최상위만 → **36.2% hit rate / 36.9% token ratio**
+
+### exp2 — TTFT Baseline 비교 (Qwen2.5-Coder-0.5B 기준)
+
+| 조건 | 평균 TTFT | vanilla 대비 |
+|------|----------|-------------|
+| Vanilla | 31.2 ms | — |
+| vLLM prefix caching | 29.9 ms | -4.2% |
+| **SynTree KV (목표)** | — | **목표: -30%+** |
+
+> vLLM prefix caching은 hit rate 75.8%임에도 TTFT 개선이 0.8ms에 불과 — 코드 블록 구간에서 캐시가 실질적으로 작동하지 않음을 확인.
+
+---
+
 ## 진행 현황
 
 - [x] 문제 정의 및 선행 연구 조사
