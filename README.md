@@ -226,7 +226,7 @@ GO 기준: hit rate ≥ 25% AND token ratio ≥ 30%
 | 조건 | Hit Rate | Token Ratio | 판정 |
 |------|----------|-------------|------|
 | obs 단독 / vars_only | **32.6%** | 34.5% | ✅ GO |
-| obs 단독 / all | 46.0% | 42.4% | ✅ GO |
+| obs 단독 / all | 42.4% | 34.5% | ✅ GO |
 | obs+action / vars_only | 42.6% | 40.0% | ✅ GO |
 | obs+action / all | 51.1% | 40.0% | ✅ GO |
 
