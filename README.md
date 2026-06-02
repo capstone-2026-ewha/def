@@ -245,13 +245,15 @@ GO 기준: hit rate ≥ 25% AND token ratio ≥ 30%
 
 ---
 
-## 진행 현황
+## 1학기 연구 결과
 
 - [x] 문제 정의 및 선행 연구 조사
 - [x] Qwen3-Coder-30B-A3B-FP8로 SWE-bench Lite trace 48개 수집
 - [x] AST 지문 파이프라인 구현 (Tree-sitter + α-rename + BLAKE3)
 - [x] Hit rate 분석 (4가지 조건) → **GO 판정**
 - [x] Vanilla / vLLM prefix caching TTFT baseline 측정
+
+## 2학기 구현 예정
 - [ ] SessionCacheTable 구현 (PyTorch KV splice 훅)
 - [ ] RoPE re-positioning 모듈 구현
 - [ ] AST 인식 KV 재사용 통합 실험
