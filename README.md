@@ -244,7 +244,7 @@ def/
 ├── .gitignore
 │
 ├── docs/
-│   ├── [14]_def_FinalReport.PDF
+│   ├── 14_def_FinalReport.PDF
 │   └── 발표자료
 │
 └── experiments/
