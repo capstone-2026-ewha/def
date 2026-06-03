@@ -278,8 +278,8 @@ def/
 │	├── elevator_speech.md
 │	├── project briefs.md
 │	├── related_works.md
-│	├── 14_def_FinalReport.PDF	          ← 최종보고서
-│   └── 14_def.pdf                        ← 발표자료 
+│	├── 14_def_FinalReport.pdf	          ← 최종보고서
+│   └── 14_def_발표자료.pdf	              ← 발표자료 
 │
 └── experiments/
 		├── scripts/
