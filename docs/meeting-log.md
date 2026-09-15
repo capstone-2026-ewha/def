@@ -24,3 +24,20 @@
 - 시각화 자료 및 PPT 완성
 - 발표 대본 작성
 - 2026-09-10 자료 제출 및 발표
+
+## 2026-09-08
+
+**타팀 프로젝트 계획 발표**
+
+### 논의 내용
+타 팀 프로젝트 계획 발표를 청취하고 상호 평가를 진행함. 교수님께서 PPT 슬라이드의 시각화 완성도를 강조하셨고, 이를 계기로 다른 팀들의 발표 자료를 참고하여 우리 팀 PPT의 시각화(그래프·다이어그램 등)를 보강함.
+
+## 2026-09-03
+
+**우리팀 프로젝트 발표 및 프로젝트 진행**
+### 논의 내용
+- 선행 연구 논문(SemShareKV)과 실험 태스크 타임라인을 검토함. 실험 환경(모델: Qwen3-Coder-30B-A3B-Instruct-FP8, 서버: EWHA-ACPL3)과 연구 프레이밍(코드-RAG 합성 워크로드에서의 KV 재사용)은 기존 결정 그대로 확인만 함.
+- 일반화 검증 작업 진행
+  - 09-10 결정에 따라 Mistral-7B와 Llama-3.1-8B 모델을 설치하고 동일 워크로드에서 실행함. 실행 완료 상태이며, 결과(hit rate, TTFT 등) 분석은 다음 단계로 예정.
+- 코드 정리
+  - 하드코딩 경로를 쓰던 스크립트 8개(gate_recomp.py, flip_analysis.py, predict_recomp_retention.py, loss_concentration.py, contest_split.py, score_subsets.py, score_bugloc_384.py, score_bugloc_ctx.py)를 ASTKV_ROOT 및 스크립트 위치 기준 상대경로 유도 관례로 교체함 (백업: scratch/path_fix_backup_20260903.tgz).
