@@ -42,7 +42,7 @@
 - 코드 정리
   - 하드코딩 경로를 쓰던 스크립트 8개(gate_recomp.py, flip_analysis.py, predict_recomp_retention.py, loss_concentration.py, contest_split.py, score_subsets.py, score_bugloc_384.py, score_bugloc_ctx.py)를 ASTKV_ROOT 및 스크립트 위치 기준 상대경로 유도 관례로 교체함 (백업: scratch/path_fix_backup_20260903.tgz).
 
-## 2026.09.15
+## 2026-09-15
 
 **9/14 지도교수님 피드백 정리 및 실험 보완 계획** 
 
